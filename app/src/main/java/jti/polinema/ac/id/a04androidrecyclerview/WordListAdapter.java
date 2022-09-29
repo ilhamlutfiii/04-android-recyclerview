@@ -39,7 +39,7 @@ public class WordListAdapter extends
 
 
     private LayoutInflater mInflater;
-    public WordListAdapter(Context context,
+    public WordListAdapter(MainActivity context,
                            LinkedList<String> wordList) {
         mInflater = LayoutInflater.from(context);
         this.mWordList = wordList;

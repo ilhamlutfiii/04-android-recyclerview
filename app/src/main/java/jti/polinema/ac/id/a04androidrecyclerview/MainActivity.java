@@ -12,6 +12,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import androidx.recyclerview.widget.RecyclerView;
 
 import jti.polinema.ac.id.a04androidrecyclerview.databinding.ActivityMainBinding;
 
@@ -22,6 +23,8 @@ import java.util.LinkedList;
 
 public class MainActivity extends AppCompatActivity {
 
+    private RecyclerView mRecyclerView;
+    private WordListAdapter mAdapter;
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
     private final LinkedList<String> mWordList = new LinkedList<>();
@@ -31,6 +34,14 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < 20; i++) {
             mWordList.addLast("Word " + i);
         }
+        // Get a handle to the RecyclerView.
+        mRecyclerView = findViewById(R.id.recyclerview);
+// Create an adapter and supply the data to be displayed.
+        mAdapter = new WordListAdapter(this, mWordList);
+// Connect the adapter with the RecyclerView.
+        mRecyclerView.setAdapter(mAdapter);
+// Give the RecyclerView a default layout manager.
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         super.onCreate(savedInstanceState);
 
 
